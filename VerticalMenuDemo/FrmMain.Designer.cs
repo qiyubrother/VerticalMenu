@@ -38,7 +38,7 @@
             this.vMenu1.Dock = System.Windows.Forms.DockStyle.Left;
             this.vMenu1.Location = new System.Drawing.Point(0, 0);
             this.vMenu1.Name = "vMenu1";
-            this.vMenu1.Size = new System.Drawing.Size(310, 730);
+            this.vMenu1.Size = new System.Drawing.Size(216, 730);
             this.vMenu1.TabIndex = 0;
             // 
             // btnAdd

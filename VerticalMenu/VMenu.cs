@@ -33,8 +33,9 @@ namespace VerticalMenu
                     mi.Tag = index;
                     lst.Add(mi);
                 }
-                else
+                else 
                 {
+                    // 常规可折叠按钮项
                     var mi = new MenuItemWithSubItem();
                     mi.Dock = DockStyle.Top;
                     mi.Text = item.Text;
@@ -49,6 +50,7 @@ namespace VerticalMenu
                         mi.AddButton(m.Text, m.LeftImage, m.ClickAction);
                     }
                 }
+
                 index ++;
             }
             var vmis = lst.OrderByDescending(x => (int)x.Tag);
@@ -59,7 +61,44 @@ namespace VerticalMenu
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            
+        }
+
+        public List<ImageButton> GetButtonByText(string text)
+        {
+            var pnl = this;
+            var lst = new List<ImageButton>();
+            foreach (var c in pnl.Controls)
+            {
+                var menuItem = c as MenuItem;
+                if (menuItem != null)
+                {
+                    if (menuItem is MenuItemGeneral)
+                    {
+                        if (menuItem.Text == text)
+                        {
+                            var mi = menuItem as MenuItemGeneral;
+                            lst.Add(mi.ImageButton);
+                        }
+                    }
+                    else if (menuItem is MenuItemWithSubItem)
+                    {
+                        if (menuItem.Text == text)
+                        {
+                            lst.Add((menuItem as MenuItemWithSubItem).HeaderImageButton);
+                        }
+                        var mi = menuItem as MenuItemWithSubItem;
+                        foreach (var sub in mi.GetDetailImageButtons())
+                        {
+                            if (sub.Text == text)
+                            {
+                                lst.Add(sub);
+                            }
+                        }
+                    }
+                }
+            }
+
+            return lst;
         }
     }
 
@@ -85,6 +124,10 @@ namespace VerticalMenu
         /// 是否包含子菜单项
         /// </summary>
         public bool HasSubMenuItem { get; set; }
+        /// <summary>
+        /// Tag 标记
+        /// </summary>
+        public string Tag { get; set; }
         /// <summary>
         /// 子菜单项
         /// </summary>

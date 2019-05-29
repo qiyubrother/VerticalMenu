@@ -116,5 +116,16 @@ namespace VerticalMenu
         /// <param name="img"></param>
         public void SetLeftImage(Bitmap img) => btnMenuItem.SetLeftImage(img);
 
+        public ImageButton HeaderImageButton { get => btnMenuItem; }
+
+        public List<ImageButton> GetDetailImageButtons()
+        {
+            var lst = new List<ImageButton>();
+
+            foreach (Control c in pnlContainer.Controls) lst.Add(c as ImageButton);
+
+            return lst;
+        }
+
     }
 }

@@ -20,8 +20,13 @@ namespace VerticalMenu
         {
             if (img != null)
             {
-                _leftImage = new Bitmap(img, new Size(24, 24));
+                _leftImage = new Bitmap(img, new Size(16, 16));
             }
+            else
+            {
+                _leftImage = null;
+            }
+            Refresh();
         }
         /// <summary>
         /// 按钮右侧图标，图标大小为24X24
@@ -31,7 +36,7 @@ namespace VerticalMenu
         {
             if (img != null)
             {
-                _rightImage = new Bitmap(img, new Size(24, 24));
+                _rightImage = new Bitmap(img, new Size(16, 16));
             }
         }
 
@@ -40,11 +45,11 @@ namespace VerticalMenu
             base.OnPaint(pevent);
             if (_leftImage != null)
             {
-                pevent.Graphics.DrawImage(_leftImage, new PointF(8.0f, 8.0f));
+                pevent.Graphics.DrawImage(_leftImage, new PointF(8.0f, 12.0f));
             }
             if (_rightImage != null)
             {
-                pevent.Graphics.DrawImage(_rightImage, new PointF(Width - 24 - 8.0f, 8.0f));
+                pevent.Graphics.DrawImage(_rightImage, new PointF(Width - 24 - 8.0f, 12.0f));
             }
         }
     }

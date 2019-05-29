@@ -43,5 +43,7 @@ namespace VerticalMenu
                 btnMenuItem.Click += (o, e) => a();
             }            
         }
+
+        public ImageButton ImageButton { get; private set; }
     }
 }

@@ -28,6 +28,32 @@ namespace VerticalMenuDemo
 
             vMenu1.SetMenu(new VMenuItem[]
             {
+                new VMenuItem{ Text = "电子白板屏信号源", HasSubMenuItem = true, LeftImage = Properties.Resources.menu, Tag = "Source", SubItems = new []{
+                    new VMenuItem{ Text = "主控屏", HasSubMenuItem = false, LeftImage = null, ClickAction = ()=>{
+                        // 此处添加Click响应
+                        var mainScreen = vMenu1.GetButtonByText("主控屏")[0];
+                        var promptScreen = vMenu1.GetButtonByText("提示屏")[0];
+                        mainScreen.SetLeftImage(Properties.Resources.ok);
+                        promptScreen.SetLeftImage(null);
+                        mainScreen.ForeColor = Color.White;
+                        mainScreen.BackColor = Color.Green;
+                        promptScreen.ForeColor = Color.Black;
+                        promptScreen.BackColor = Color.White;
+
+                    } },
+                    new VMenuItem{ Text = "提示屏", HasSubMenuItem = false, LeftImage = null, ClickAction = ()=>{
+                        // 此处添加Click响应
+                        var mainScreen = vMenu1.GetButtonByText("主控屏")[0];
+                        var promptScreen = vMenu1.GetButtonByText("提示屏")[0];
+                        mainScreen.SetLeftImage(null);
+                        promptScreen.SetLeftImage(Properties.Resources.ok);
+                        promptScreen.ForeColor = Color.White;
+                        promptScreen.BackColor = Color.Green;
+                        mainScreen.ForeColor = Color.Black;
+                        mainScreen.BackColor = Color.White;
+                    } },
+                } },
+
                 new VMenuItem{ Text = "学生考勤", HasSubMenuItem = false, LeftImage = Properties.Resources.analysis, ClickAction = ()=>{
                     // 此处添加Click响应
                     ;
